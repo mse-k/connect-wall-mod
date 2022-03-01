@@ -4,13 +4,13 @@ import arc.*;
 import arc.util.*;
 import mindustry.*;
 import mindustry.content.*;
-import connwall.content.*
+import connwall.content.*;
 import mindustry.game.EventType.*;
 import mindustry.gen.*;
 import mindustry.mod.*;
 import mindustry.ui.dialogs.*;
 
-public class ExampleJavaMod extends Mod{
+public class ConnWallMod extends Mod{
 
     public ExampleJavaMod(){
         Log.info("Loaded ExampleJavaMod constructor.");
