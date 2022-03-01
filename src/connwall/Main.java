@@ -28,7 +28,6 @@ public class ConnWallMod extends Mod{
         });
     }
     
-    @Override
     public void loadContent(){
         new ExBlocks().load();
     }
