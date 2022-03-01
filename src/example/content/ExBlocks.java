@@ -10,11 +10,11 @@ import static mindustry.type.ItemStack.*;
 public class ExBlocks implements ContentList{
 
     public static Block
-    silverWall;
+    testWall
 
     @Override
     public void load(){
-        silverWall = new ConnWall("test-wall"){{
+        testWall = new ConnWall("test-wall"){{
             requirements(Category.defense, with(Items.lead, 6));
             health = 420;
         }};
