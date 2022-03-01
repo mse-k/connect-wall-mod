@@ -49,7 +49,7 @@ public class ConnWall extends Wall{
 	public int linkMaxIteration = 1;
 	public float linkAlphaLerpDst = 24f;
 	public float linkAlphaScl = 0.75f;
-	public float minShareDamage = 70;
+	public float minShareDamage = 1;
 	
 	public final IntMap<TextureRegion> sprites = new IntMap<>();
 	
