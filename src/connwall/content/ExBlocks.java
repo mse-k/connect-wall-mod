@@ -4,6 +4,7 @@ import mindustry.ctype.ContentList;
 import mindustry.type.Category;
 import mindustry.world.Block;
 import mindustry.world.blocks.defense.Wall;
+import connwall.content.*;
 
 import static mindustry.type.ItemStack.*;
 
