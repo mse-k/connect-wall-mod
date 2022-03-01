@@ -15,7 +15,7 @@ public class ExBlocks implements ContentList{
 
     public void load(){
         testWall = new ConnWall("test-wall"){{
-            requirements(Category.defense, with(Items.lead, 6));
+            requirements(Category.defense, with());
             health = 420;
         }};
     }
