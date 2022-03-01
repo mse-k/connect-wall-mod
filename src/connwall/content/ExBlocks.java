@@ -11,7 +11,7 @@ import static mindustry.type.ItemStack.*;
 public class ExBlocks implements ContentList{
 
     public static Block
-    testWall
+    testWall;
 
     public void load(){
         testWall = new ConnWall("test-wall"){{
