@@ -1,4 +1,4 @@
-package example;
+package connwall;
 
 import arc.*;
 import arc.util.*;
