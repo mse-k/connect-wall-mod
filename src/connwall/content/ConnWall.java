@@ -45,11 +45,6 @@ public class ConnWall extends Wall{
 		new Point2(-1, -1),
 		new Point2(1, -1)
 	};
-
-	public int linkMaxIteration = 1;
-	public float linkAlphaLerpDst = 24f;
-	public float linkAlphaScl = 0.75f;
-	public float minShareDamage = 1;
 	
 	public final IntMap<TextureRegion> sprites = new IntMap<>();
 	
@@ -78,7 +73,6 @@ public class ConnWall extends Wall{
 	}
 	
 	public class ConnWallBuild extends Building{
-		public Seq<ConnWallBuild> connectedWalls = new Seq<>();
 		public BoolSeq proximityWalls = new BoolSeq(8);
 		protected int drawKey = defaultKey;
 		
@@ -125,57 +119,6 @@ public class ConnWall extends Wall{
 					((ConnWallBuild)build).computePoint(Tmp.p1.set(tileX() - build.tileX(), tileY() - build.tileY()));
 				}
 			}
-			
-			updateConnection(add);
-		}
-		
-		public OrderedSet<ConnWallBuild> getConnections(int iteration){
-			OrderedSet<ConnWallBuild> builds = new OrderedSet<>();
-			builds.addAll(connectedWalls);
-			
-			if(iteration > 0){
-				for(ConnWallBuild build : connectedWalls){
-					builds.addAll(build.getConnections(iteration - 1));
-				}
-			}
-			
-			return builds;
-		}
-		
-		public void updateConnection(boolean add){
-			for(Point2 index : traverseKey){
-				Building build = Vars.world.build(tileX() + index.x, tileY() + index.y);
-				if(build instanceof ConnWallBuild){
-					ConnWallBuild b = (ConnWallBuild)build;
-					
-					if(add)b.connectedWalls.add(this);
-					else b.connectedWalls.remove(this);
-					
-					connectedWalls.add(b);
-				}
-			}
-		}
-		
-		@Override
-		public boolean collision(Bullet other){
-			if(other.type.absorbable)other.absorb();
-			return super.collision(other);
-		}
-		
-		@Override
-		public float handleDamage(float amount){
-			if(amount > minShareDamage && hitTime <= 0){
-				float maxHandOut = amount / 9;
-				float haveHandOut = 0;
-				
-				for(ConnWallBuild b : connectedWalls){
-					float damageP = Math.max(maxHandOut, Mathf.curve(b.healthf(), 0.25f, 0.75f) * maxHandOut);
-					haveHandOut += damageP;
-					b.damage(team, damageP);
-				}
-				hitTime = Math.max(1.5f, hitTime);
-				return amount - haveHandOut;
-			}else return super.handleDamage(amount);
 		}
 		
 		@Override
@@ -185,28 +128,8 @@ public class ConnWall extends Wall{
 		}
 		
 		@Override
-		public void afterDestroyed(){
-			super.afterDestroyed();
-			updateConnection(false);
-		}
-		
-		@Override
-		public void drawSelect(){
-			super.drawSelect();
-			Draw.color(team.color);
-			for(Building b : connectedWalls){
-				Draw.alpha((1 - b.dst(this) / linkAlphaLerpDst) * linkAlphaScl);
-				Fill.square(b.x, b.y, b.block.size * tilesize / 2f);
-			}
-			
-			Draw.alpha(linkAlphaScl);
-			Fill.square(x, y, size * tilesize / 2f);
-		}
-		
-		@Override
 		public void created(){
 			super.created();
-			updateConnection(true);
 			if(Vars.net.active() && !Vars.headless){
 				initSeq();
 				updateIndexKey(true);
