@@ -13,7 +13,6 @@ public class ExBlocks implements ContentList{
     public static Block
     testWall
 
-    @Override
     public void load(){
         testWall = new ConnWall("test-wall"){{
             requirements(Category.defense, with(Items.lead, 6));
