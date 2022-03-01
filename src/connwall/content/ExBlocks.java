@@ -1,4 +1,4 @@
-package example.content;
+package connwall.content;
 
 import mindustry.ctype.ContentList;
 import mindustry.type.Category;
