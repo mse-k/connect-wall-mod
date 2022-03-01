@@ -172,10 +172,7 @@ public class ConnWall extends Wall{
 					float damageP = Math.max(maxHandOut, Mathf.curve(b.healthf(), 0.25f, 0.75f) * maxHandOut);
 					haveHandOut += damageP;
 					b.damage(team, damageP);
-					if(damageP > 0.5f) NHFx.shareDamage.at(b.x, b.y, b.block.size * tilesize / 2f, team.color, damageP / Math.max(maxHandOut, minShareDamage));
 				}
-				
-				NHFx.shareDamage.at(x, y, block.size * tilesize / 2f, team.color, 1f);
 				hitTime = Math.max(1.5f, hitTime);
 				return amount - haveHandOut;
 			}else return super.handleDamage(amount);
