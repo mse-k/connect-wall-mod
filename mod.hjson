@@ -8,7 +8,7 @@ name: "connwall"
 author: "mse"
 
 #the fully qualified main class of the mod
-main: "connwall.Main"
+main: "connwall.ConnWallMod"
 
 #the mod description as seen in the mod dialog
 description: "Adds connecting wall textures"
