@@ -12,7 +12,7 @@ import mindustry.ui.dialogs.*;
 
 public class ConnWallMod extends Mod{
 
-    public ExampleJavaMod(){
+    public ConnWallMod(){
         Log.info("Loaded ExampleJavaMod constructor.");
 
         //listen for game load event
