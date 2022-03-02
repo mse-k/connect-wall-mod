@@ -160,7 +160,7 @@ public class ConnWall extends Wall{
 			updateIndexKey(false);
 		}
 		
-		@Override
+		/*@Override
 		public void write(Writes write){
 			super.write(write);
 			write.i(drawKey);
@@ -178,6 +178,6 @@ public class ConnWall extends Wall{
 			for(int i = 0; i < 8; i++){
 				proximityWalls.add(read.bool());
 			}
-		}
+		}*/ //removal needed for compatibility, probably bad tho
 	}
 }
