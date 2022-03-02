@@ -19,9 +19,5 @@ public class ExBlocks implements ContentList{
             requirements(Category.defense, with(Items.lead, 6));
             health = 420;
         }};
-        Blocks.copperWall = new ConnWall("copper-wall"){{
-            requirements(Category.defense, with(Items.copper, 6));
-            health = 80 * 4;
-        }};
     }
 }
