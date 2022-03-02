@@ -136,14 +136,14 @@ public class ConnWall extends Wall{
 			}
 		}
 		
-		@Override
+		/*@Override
 		public void placed(){
 			super.placed();
 			
 			initSeq();
 			
 			updateIndexKey();
-		}
+		}*/
 		
 		public void initSeq(){
 			if(proximityWalls.size < 8){
@@ -159,26 +159,6 @@ public class ConnWall extends Wall{
 			super.onRemoved();
 			updateIndexKey();
 		}
-		
-		/*@Override
-		public void write(Writes write){
-			super.write(write);
-			write.i(drawKey);
-			if(proximityWalls.size == 8)for(int i = 0; i < 8; i++){
-				write.bool(proximityWalls.get(i));
-			}else for(int i = 0; i < 8; i++){
-				write.bool(false);
-			}
-		}
-		
-		@Override
-		public void read(Reads read, byte revision){
-			super.read(read, revision);
-			drawKey = read.i();
-			for(int i = 0; i < 8; i++){
-				proximityWalls.add(read.bool());
-			}
-		}*/ //removal needed for compatibility, probably bad tho
 		
 		@Override
 		public void read(Reads read, byte revision){
