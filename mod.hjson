@@ -23,4 +23,4 @@ minGameVersion: 129
 java: true
 
 #multiplayer compatible
-hidden: true
+#hidden: true
