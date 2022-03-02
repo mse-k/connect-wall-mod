@@ -136,6 +136,13 @@ public class ConnWall extends Wall{
 			}
 		}
 		
+		@Override
+		public void placed(){
+			super.placed();
+			initSeq();
+			updateIndexKey();
+		}
+		
 		/*@Override
 		public void placed(){
 			super.placed();
