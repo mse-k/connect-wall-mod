@@ -139,18 +139,11 @@ public class ConnWall extends Wall{
 		@Override
 		public void placed(){
 			super.placed();
+			
 			initSeq();
+			
 			updateIndexKey();
 		}
-		
-		/*@Override
-		public void placed(){
-			super.placed();
-			
-			initSeq();
-			
-			updateIndexKey();
-		}*/
 		
 		public void initSeq(){
 			if(proximityWalls.size < 8){
