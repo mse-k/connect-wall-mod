@@ -5,6 +5,7 @@ import mindustry.type.Category;
 import mindustry.world.Block;
 import mindustry.world.blocks.defense.Wall;
 import connwall.content.*;
+import mindustry.content.*;
 
 import static mindustry.type.ItemStack.*;
 
@@ -15,8 +16,12 @@ public class ExBlocks implements ContentList{
 
     public void load(){
         testWall = new ConnWall("shaped-wall"){{
-            requirements(Category.defense, with());
+            requirements(Category.defense, with(Items.lead, 6));
             health = 420;
+        }};
+        Blocks.copperWall = new ConnWall("copper-wall"){{
+            requirements(Category.defense, with(Items.copper, 6));
+            health = 80 * 4;
         }};
     }
 }
