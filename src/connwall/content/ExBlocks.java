@@ -12,12 +12,18 @@ import static mindustry.type.ItemStack.*;
 public class ExBlocks implements ContentList{
 
     public static Block
-    testWall, fCopperWall, fTitaniumWall;
+    testWall, testWallPlast, fCopperWall, fTitaniumWall;
 
     public void load(){
         testWall = new ConnWall("shaped-wall"){{
             requirements(Category.defense, with(Items.lead, 6));
             health = 420;
+        }};
+        testWallPlast = new ConnWall("shaped-wall-plast"){{
+            requirements(Category.defense, with(Items.metaglass, 6));
+            health = 420;
+            insulated = true;
+            absorbLasers = true;
         }};
         fCopperWall = new ConnWall("copper-wall"){{
             requirements(Category.defense, with(Items.copper, 6));
