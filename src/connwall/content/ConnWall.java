@@ -149,7 +149,7 @@ public class ConnWall extends Wall{
 			if(proximityWalls.size < 8){
 				proximityWalls.clear();
 				for(int i = 0; i < 8; i++){
-					proximityWalls.add();
+					proximityWalls.add(false);
 				}
 			}
 		}
