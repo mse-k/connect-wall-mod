@@ -111,7 +111,7 @@ public class ConnWall extends Wall{
 			updateKey();
 		}
 	
-		public void updateIndexKey(boolean add){
+		public void updateIndexKey(){
 			for(Point2 index : traverseKey){
 				Building build = Vars.world.build(tileX() + index.x, tileY() + index.y);
 				if(build instanceof ConnWallBuild){
@@ -132,7 +132,7 @@ public class ConnWall extends Wall{
 			super.created();
 			if(Vars.net.active() && !Vars.headless){
 				initSeq();
-				updateIndexKey(true);
+				updateIndexKey();
 			}
 		}
 		
@@ -142,14 +142,14 @@ public class ConnWall extends Wall{
 			
 			initSeq();
 			
-			updateIndexKey(true);
+			updateIndexKey();
 		}
 		
 		public void initSeq(){
 			if(proximityWalls.size < 8){
 				proximityWalls.clear();
 				for(int i = 0; i < 8; i++){
-					proximityWalls.add(false);
+					proximityWalls.add();
 				}
 			}
 		}
@@ -179,5 +179,12 @@ public class ConnWall extends Wall{
 				proximityWalls.add(read.bool());
 			}
 		}*/ //removal needed for compatibility, probably bad tho
+		
+		@Override
+		public void read(Reads read, byte revision){
+			super.read(read, revision);
+			initSeq();
+			updateIndexKey();
+		}
 	}
 }
