@@ -21,6 +21,20 @@ import mindustry.world.blocks.defense.Wall;
 import static mindustry.Vars.tilesize;
 
 public class ConnWall extends Wall{
+	//TODO: support large walls
+	/*
+		there used to be alot of text documenting this but then the fucking power went out and the edits went gone so just have this instead
+		
+		9  3  2  8
+		4  c  d  1
+		5  a  b  0
+		10 6  7  11
+		
+		need 40 textures, 10 per lettered tile
+		keys look like this: c010010111101
+		a b c or d, then 12 bits
+	*/
+	
 	protected static final int defaultKey = "00000000".hashCode();
 	
 	protected static final int[] needCheckPoint = {4, 5, 6, 7};
@@ -99,7 +113,7 @@ public class ConnWall extends Wall{
 				2 x 0
 				6 3 7
 			 */
-			int x = point.x, y = point.y;
+			//int x = point.x, y = point.y; //epic using the code you make fail
 			
 			for(int i = 0; i < traverseKey.length; i++){
 				if(point.equals(traverseKey[i])){
