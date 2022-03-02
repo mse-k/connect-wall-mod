@@ -157,7 +157,7 @@ public class ConnWall extends Wall{
 		@Override
 		public void onRemoved(){
 			super.onRemoved();
-			updateIndexKey(false);
+			updateIndexKey();
 		}
 		
 		/*@Override
