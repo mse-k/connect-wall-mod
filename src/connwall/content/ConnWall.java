@@ -148,7 +148,7 @@ public class ConnWall extends Wall{
 		@Override
 		public void created(){
 			super.created();
-			if(canConnect){
+			if(Vars.net.active() && !Vars.headless){
 				initSeq();
 				updateIndexKey();
 			}
