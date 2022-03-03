@@ -12,7 +12,7 @@ import static mindustry.type.ItemStack.*;
 public class ExBlocks implements ContentList{
 
     public static Block
-    testWall, testWallPlast, fCopperWall, fTitaniumWall, fPlastaniumWall, fPhaseWall;
+    testWall, testWallPlast, testWallTit, fCopperWall, fTitaniumWall, fPlastaniumWall, fPhaseWall;
 
     public void load(){
         testWall = new ConnWall("shaped-wall"){{
@@ -24,6 +24,10 @@ public class ExBlocks implements ContentList{
             health = 420;
             insulated = true;
             absorbLasers = true;
+        }};
+        testWallTit = new ConnWall("shaped-wall-titanium"){{
+            requirements(Category.defense, with(Items.silicon, 6));
+            health = 420;
         }};
         fCopperWall = new ConnWall("copper-wall"){{
             requirements(Category.defense, with(Items.copper, 6));
