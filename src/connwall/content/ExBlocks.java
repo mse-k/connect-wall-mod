@@ -33,7 +33,7 @@ public class ExBlocks implements ContentList{
             requirements(Category.defense, with(Items.titanium, 6));
             health = 110 * 4;
         }};
-        fPlastaniumWall = new Wall("plastanium-wall"){{
+        fPlastaniumWall = new ConnWall("plastanium-wall"){{
             requirements(Category.defense, with(Items.plastanium, 5, Items.metaglass, 2));
             health = 125 * 4;
             insulated = true;
