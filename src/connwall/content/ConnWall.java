@@ -124,11 +124,15 @@ public class ConnWall extends Wall{
 			
 			updateKey();
 		}
+		
+		public boolean canConnect(Building build){
+			return (build instanceof ConnWallBuild) && (block == build.block);
+		}
 	
 		public void updateIndexKey(){
 			for(Point2 index : traverseKey){
 				Building build = Vars.world.build(tileX() + index.x, tileY() + index.y);
-				if(build instanceof ConnWallBuild){
+				if(canConnect(build)){
 					computePoint(Tmp.p1.set(build.tileX() - tileX(), build.tileY() - tileY()));
 					((ConnWallBuild)build).computePoint(Tmp.p1.set(tileX() - build.tileX(), tileY() - build.tileY()));
 				}
@@ -144,7 +148,7 @@ public class ConnWall extends Wall{
 		@Override
 		public void created(){
 			super.created();
-			if(Vars.net.active() && !Vars.headless){
+			if(canConnect){
 				initSeq();
 				updateIndexKey();
 			}
