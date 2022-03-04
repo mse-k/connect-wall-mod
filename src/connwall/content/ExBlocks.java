@@ -12,7 +12,12 @@ import static mindustry.type.ItemStack.*;
 public class ExBlocks implements ContentList{
 
     public static Block
-    testWall, testWallPlast, testWallTit, testWallThor, fCopperWall, fTitaniumWall, fPlastaniumWall, fPhaseWall;
+    
+    //test walls (grey)
+    testWall, testWallPlast, testWallTit, testWallThor,
+
+    //fake walls for testing
+    fCopperWall, fTitaniumWall, fPlastaniumWall, fPhaseWall, fThoriumWall, fSurgeWall;
 
     public void load(){
         testWall = new ConnWall("shaped-wall"){{
@@ -53,6 +58,15 @@ public class ExBlocks implements ContentList{
             health = 150 * 4;
             chanceDeflect = 10f;
             flashHit = true;
+        }};
+        fThoriumWall = new ConnWall("thorium-wall"){{
+            requirements(Category.defense, with(Items.thorium, 6));
+            health = 200 * 4;
+        }};
+        fSurgeWall = new ConnWall("surge-wall"){{
+            requirements(Category.defense, with(Items.surgeAlloy, 6));
+            health = 230 * 4;
+            lightningChance = 0.05f;
         }};
     }
 }
