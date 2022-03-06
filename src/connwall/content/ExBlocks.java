@@ -11,6 +11,14 @@ import static mindustry.type.ItemStack.*;
 
 public class ExBlocks implements ContentList{
 
+    protected void replaceBlock(Block oldBlock, Block newBlock) {
+        var blockMap = Reflect.<ObjectMap<String, MappableContent>[]>get(Vars.content, "contentNameMap")[ContentType.block.ordinal()];
+        blockMap.set(oldBlock.name, newBlock); // Replace old block in the name map
+        blockMap.remove(newBlock.name); // Remove the old name of the new block in the name map
+        newBlock.name = oldBlock.name; // Change the name
+        oldBlock = newBlock; // Replace the old block with the new one
+    }
+    
     public static Block
     
     //test walls (grey)
@@ -68,5 +76,11 @@ public class ExBlocks implements ContentList{
             health = 230 * 4;
             lightningChance = 0.05f;
         }};
+        replaceBlock(Blocks.copperWall, fCopperWall);
+        replaceBlock(Blocks.titaniumWall, fTitaniumWall);
+        replaceBlock(Blocks.plastaniumWall, fPlanstaniumWall);
+        replaceBlock(Blocks.thoriumWall, fThoriumWall);
+        replaceBlock(Blocks.phaseWall, fPhaseWall);
+        replaceBlock(Blocks.surgeWall, fSurgeWall);
     }
 }
