@@ -63,8 +63,28 @@ public class ConnWall extends Wall{
 	public final IntMap<TextureRegion> sprites = new IntMap<>();
 	
 	public ConnWall(String name){
-		this.name = name; //behold... the worst code in history
-		super(name);
+		//hot garbagenator ultra final form 2022 colorized ultra hd 16k 120fps 69420p 360 deg 3d view 2AM (uncenored) (netflix edition) (GIVAWAY) (CARD GIVEAWAY AT END) (YTP) (shitcore epic remix) (GONE WRONG) (GONE SEXUAL) (ENGLISH SUBTITLES) (BRAILLE SUBTITLES) (SPANISH SUBTITLES) (ESPERANTO SUBTITLES) (AMERICAN SIGN LANGUAGE SUBTITLES) (LOJBAN SUBTITLES) (NOT CLICKBAIT) (CENSORED) (CALLED SATAN) (asmr) (3 AM CHALLENGE) (COPS CALLED)
+		//MappableContent (but sussy)
+		this.name = name;
+		Vars.content.handleMappableContent(this);
+		//UnlockableContent
+		this.localizedName = Core.bundle.get(getContentType() + "." + this.name + ".name", this.name);
+		this.description = Core.bundle.getOrNull(getContentType() + "." + this.name + ".description");
+		this.details = Core.bundle.getOrNull(getContentType() + "." + this.name + ".details");
+		this.unlocked = Core.settings != null && Core.settings.getBool(this.name + "-unlocked", false);
+		//Building
+		initBuilding();
+		//Wall
+		solid = true;
+		destructible = true;
+		group = BlockGroup.walls;
+		buildCostMultiplier = 6f;
+		canOverdrive = false;
+		drawDisabled = false;
+
+		//it's a wall of course it's supported everywhere
+		envEnabled = Env.any;
+		//ConnWall
 		size = 1;
 	}
 	
