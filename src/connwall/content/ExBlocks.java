@@ -87,7 +87,7 @@ public class ExBlocks implements ContentList{
         replaceBlock(Blocks.phaseWall, fPhaseWall);
         replaceBlock(Blocks.surgeWall, fSurgeWall);*/
         var blockMap = Reflect.<ObjectMap<String, MappableContent>[]>get(Vars.content, "contentNameMap")[ContentType.block.ordinal()];
-        Vars.content.blocks().<Wall>each(b -> b instanceof Wall, b -> {
+        Vars.content.blocks().<Wall>each(b -> b instanceof Wall && b.size == 1 && b != Blocks.scrapWall, b -> {
             blockMap.remove(b.name); // Remove old one
             b = new CustomWall(b.name);
         });
