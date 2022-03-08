@@ -63,6 +63,7 @@ public class ConnWall extends Wall{
 	public final IntMap<TextureRegion> sprites = new IntMap<>();
 	
 	public ConnWall(String name){
+		this.name = name; //behold... the worst code in history
 		super(name);
 		size = 1;
 	}
