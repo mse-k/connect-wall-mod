@@ -13,7 +13,7 @@ import mindustry.ui.dialogs.*;
 public class ConnWallMod extends Mod{
 
     public ConnWallMod(){
-        Log.info("Loaded ExampleJavaMod constructor.");
+        //Log.info("Loaded ExampleJavaMod constructor.");
 
         //listen for game load event
         Events.on(ClientLoadEvent.class, e -> {
@@ -28,7 +28,7 @@ public class ConnWallMod extends Mod{
         });
     }
     
-    public void loadContent(){
+    public void init(){//loadContent(){
         new ExBlocks().load();
     }
 
