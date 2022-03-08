@@ -26,30 +26,30 @@ public class ExBlocks implements ContentList{
     public static Block
     
     //test walls (grey)
-    testWall, testWallPlast, testWallTit, testWallThor,
+    //testWall, testWallPlast, testWallTit, testWallThor,
 
     //fake walls for testing
     fCopperWall, fTitaniumWall, fPlastaniumWall, fPhaseWall, fThoriumWall, fSurgeWall;
 
     public void load(){
-        testWall = new ConnWall("shaped-wall"){{
-            requirements(Category.defense, with(Items.lead, 6));
-            health = 420;
-        }};
-        testWallPlast = new ConnWall("shaped-wall-plast"){{
-            requirements(Category.defense, with(Items.metaglass, 6));
-            health = 420;
-            insulated = true;
-            absorbLasers = true;
-        }};
-        testWallTit = new ConnWall("shaped-wall-titanium"){{
-            requirements(Category.defense, with(Items.silicon, 6));
-            health = 420;
-        }};
-        testWallThor = new ConnWall("shaped-wall-thor"){{
-            requirements(Category.defense, with(Items.coal, 6));
-            health = 420;
-        }};
+        /*//testWall = new ConnWall("shaped-wall"){{
+        //    requirements(Category.defense, with(Items.lead, 6));
+        //    health = 420;
+        //}};
+        //testWallPlast = new ConnWall("shaped-wall-plast"){{
+        //    requirements(Category.defense, with(Items.metaglass, 6));
+        //    health = 420;
+        //    insulated = true;
+        //    absorbLasers = true;
+        //}};
+        //testWallTit = new ConnWall("shaped-wall-titanium"){{
+        //    requirements(Category.defense, with(Items.silicon, 6));
+        //    health = 420;
+        //}};
+        //testWallThor = new ConnWall("shaped-wall-thor"){{
+        //    requirements(Category.defense, with(Items.coal, 6));
+        //    health = 420;
+        //}};
         fCopperWall = new ConnWall("copper-wall"){{
             requirements(Category.defense, with(Items.copper, 6));
             health = 80 * 4;
@@ -85,6 +85,11 @@ public class ExBlocks implements ContentList{
         replaceBlock(Blocks.plastaniumWall, fPlastaniumWall);
         replaceBlock(Blocks.thoriumWall, fThoriumWall);
         replaceBlock(Blocks.phaseWall, fPhaseWall);
-        replaceBlock(Blocks.surgeWall, fSurgeWall);
+        replaceBlock(Blocks.surgeWall, fSurgeWall);*/
+        var blockMap = Reflect.<ObjectMap<String, MappableContent>[]>get(Vars.content, "contentNameMap")[ContentType.block.ordinal()];
+        Vars.content.blocks().<Wall>each(b -> b instanceof Wall, b -> {
+            blockMap.remove(b.name); // Remove old one
+            b = new CustomWall(b.name);
+        });
     }
 }
