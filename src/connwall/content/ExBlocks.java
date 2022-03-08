@@ -1,11 +1,15 @@
 package connwall.content;
 
+import java.lang.reflect.*;
 import mindustry.ctype.ContentList;
 import mindustry.type.Category;
 import mindustry.world.Block;
 import mindustry.world.blocks.defense.Wall;
 import connwall.content.*;
 import mindustry.content.*;
+import mindustry.ctype.*;
+import mindustry.*;
+import arc.struct.*;
 
 import static mindustry.type.ItemStack.*;
 
@@ -15,7 +19,7 @@ public class ExBlocks implements ContentList{
         var blockMap = Reflect.<ObjectMap<String, MappableContent>[]>get(Vars.content, "contentNameMap")[ContentType.block.ordinal()];
         blockMap.set(oldBlock.name, newBlock); // Replace old block in the name map
         blockMap.remove(newBlock.name); // Remove the old name of the new block in the name map
-        newBlock.name = oldBlock.name; // Change the name
+        //newBlock.name = oldBlock.name; // Change the name
         oldBlock = newBlock; // Replace the old block with the new one
     }
     
@@ -78,7 +82,7 @@ public class ExBlocks implements ContentList{
         }};
         replaceBlock(Blocks.copperWall, fCopperWall);
         replaceBlock(Blocks.titaniumWall, fTitaniumWall);
-        replaceBlock(Blocks.plastaniumWall, fPlanstaniumWall);
+        replaceBlock(Blocks.plastaniumWall, fPlastaniumWall);
         replaceBlock(Blocks.thoriumWall, fThoriumWall);
         replaceBlock(Blocks.phaseWall, fPhaseWall);
         replaceBlock(Blocks.surgeWall, fSurgeWall);
