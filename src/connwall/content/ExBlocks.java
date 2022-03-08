@@ -15,21 +15,21 @@ import static mindustry.type.ItemStack.*;
 
 public class ExBlocks implements ContentList{
 
-    protected void replaceBlock(Block oldBlock, Block newBlock) {
+    /*protected void replaceBlock(Block oldBlock, Block newBlock) {
         var blockMap = Reflect.<ObjectMap<String, MappableContent>[]>get(Vars.content, "contentNameMap")[ContentType.block.ordinal()];
         blockMap.set(oldBlock.name, newBlock); // Replace old block in the name map
         blockMap.remove(newBlock.name); // Remove the old name of the new block in the name map
         //newBlock.name = oldBlock.name; // Change the name
         oldBlock = newBlock; // Replace the old block with the new one
-    }
+    }*/
     
-    public static Block
+    /*public static Block
     
     //test walls (grey)
     //testWall, testWallPlast, testWallTit, testWallThor,
 
     //fake walls for testing
-    fCopperWall, fTitaniumWall, fPlastaniumWall, fPhaseWall, fThoriumWall, fSurgeWall;
+    fCopperWall, fTitaniumWall, fPlastaniumWall, fPhaseWall, fThoriumWall, fSurgeWall;*/
 
     public void load(){
         /*//testWall = new ConnWall("shaped-wall"){{
@@ -89,7 +89,7 @@ public class ExBlocks implements ContentList{
         var blockMap = Reflect.<ObjectMap<String, MappableContent>[]>get(Vars.content, "contentNameMap")[ContentType.block.ordinal()];
         Vars.content.blocks().<Wall>each(b -> b instanceof Wall && b.size == 1 && b != Blocks.scrapWall, b -> {
             blockMap.remove(b.name); // Remove old one
-            b = new CustomWall(b.name);
+            b = new ConnWall(b.name);
         });
     }
 }
